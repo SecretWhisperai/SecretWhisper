@@ -15,9 +15,12 @@
   </p>
 
   <p align="center">
-    <img src="https://img.shields.io/github/license/SecretWhisperxyz/SecretWhisper" alt="License" />
-    <img src="https://img.shields.io/github/stars/SecretWhisperxyz/SecretWhisper" alt="Stars" />
-    <img src="https://img.shields.io/github/forks/SecretWhisperxyz/SecretWhisper" alt="Forks" />
+    <a href="https://twitter.com/SecretWhisper_A">
+      <img src="https://img.shields.io/twitter/follow/SecretWhisper_A?style=social" alt="Twitter Follow" />
+    </a>
+    <a href="https://github.com/SecretWhisperxyz/SecretWhisper">
+      <img src="https://img.shields.io/github/stars/SecretWhisperxyz/SecretWhisper?style=social" alt="GitHub Stars" />
+    </a>
   </p>
 </div>
 
