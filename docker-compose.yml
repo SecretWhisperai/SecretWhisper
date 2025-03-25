@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - hardhat
+
+  hardhat:
+    build:
+      context: .
+      dockerfile: Dockerfile.hardhat
+    ports:
+      - "8545:8545"
+    volumes:
+      - ./contracts:/app/contracts
+      - ./test:/app/test
+    command: npx hardhat node 

@@ -6,41 +6,101 @@ contract SecretWhisper {
         address sender;
         bytes encryptedContent;
         uint256 timestamp;
+        bool isRead;
     }
 
-    mapping(address => Message[]) private messages;
-    mapping(address => mapping(address => bool)) private authorized;
+    struct Channel {
+        address creator;
+        address participant;
+        bool isActive;
+        uint256 createdAt;
+    }
 
-    event MessageSent(address indexed from, address indexed to);
-    event AuthorizationChanged(address indexed from, address indexed to, bool status);
+    mapping(bytes32 => Channel) public channels;
+    mapping(bytes32 => Message[]) private messages;
+    mapping(address => bytes32[]) public userChannels;
 
-    function sendMessage(address _to, bytes calldata _encryptedContent) external {
-        require(_to != address(0), "Invalid recipient address");
-        require(_to != msg.sender, "Cannot send message to self");
-        require(authorized[_to][msg.sender], "Not authorized to send message");
+    event ChannelCreated(bytes32 indexed channelId, address indexed creator, address indexed participant);
+    event MessageSent(bytes32 indexed channelId, address indexed sender, uint256 timestamp);
+    event ChannelClosed(bytes32 indexed channelId);
 
-        messages[_to].push(Message({
+    modifier onlyParticipant(bytes32 channelId) {
+        require(
+            channels[channelId].creator == msg.sender || 
+            channels[channelId].participant == msg.sender,
+            "Not a channel participant"
+        );
+        _;
+    }
+
+    function createChannel(address participant) external returns (bytes32) {
+        require(participant != address(0), "Invalid participant address");
+        require(participant != msg.sender, "Cannot create channel with self");
+
+        bytes32 channelId = keccak256(
+            abi.encodePacked(
+                msg.sender,
+                participant,
+                block.timestamp
+            )
+        );
+
+        require(channels[channelId].creator == address(0), "Channel already exists");
+
+        channels[channelId] = Channel({
+            creator: msg.sender,
+            participant: participant,
+            isActive: true,
+            createdAt: block.timestamp
+        });
+
+        userChannels[msg.sender].push(channelId);
+        userChannels[participant].push(channelId);
+
+        emit ChannelCreated(channelId, msg.sender, participant);
+        return channelId;
+    }
+
+    function sendMessage(bytes32 channelId, bytes calldata encryptedContent) 
+        external 
+        onlyParticipant(channelId) 
+    {
+        require(channels[channelId].isActive, "Channel is not active");
+        require(encryptedContent.length > 0, "Empty message");
+
+        messages[channelId].push(Message({
             sender: msg.sender,
-            encryptedContent: _encryptedContent,
-            timestamp: block.timestamp
+            encryptedContent: encryptedContent,
+            timestamp: block.timestamp,
+            isRead: false
         }));
 
-        emit MessageSent(msg.sender, _to);
+        emit MessageSent(channelId, msg.sender, block.timestamp);
     }
 
-    function authorize(address _address, bool _status) external {
-        require(_address != address(0), "Invalid address");
-        require(_address != msg.sender, "Cannot authorize self");
-        
-        authorized[msg.sender][_address] = _status;
-        emit AuthorizationChanged(msg.sender, _address, _status);
+    function getMessages(bytes32 channelId) 
+        external 
+        view 
+        onlyParticipant(channelId) 
+        returns (Message[] memory) 
+    {
+        return messages[channelId];
     }
 
-    function getMessages() external view returns (Message[] memory) {
-        return messages[msg.sender];
+    function closeChannel(bytes32 channelId) 
+        external 
+        onlyParticipant(channelId) 
+    {
+        require(channels[channelId].isActive, "Channel already closed");
+        channels[channelId].isActive = false;
+        emit ChannelClosed(channelId);
     }
 
-    function isAuthorized(address _from) external view returns (bool) {
-        return authorized[msg.sender][_from];
+    function getUserChannels(address user) 
+        external 
+        view 
+        returns (bytes32[] memory) 
+    {
+        return userChannels[user];
     }
 } 

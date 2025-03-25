@@ -5,6 +5,7 @@
 
 # testing
 /coverage
+coverage.json
 
 # next.js
 /.next/
@@ -12,10 +13,14 @@
 
 # production
 /build
+/dist
 
 # misc
 .DS_Store
 *.pem
+.env
+.env.*
+!.env.example
 
 # debug
 npm-debug.log*
@@ -24,11 +29,29 @@ yarn-error.log*
 
 # local env files
 .env*.local
-.env
 
 # vercel
 .vercel
 
 # typescript
 *.tsbuildinfo
-next-env.d.ts 
+next-env.d.ts
+
+# Hardhat
+cache
+artifacts
+typechain-types
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+
+# Logs
+logs
+*.log
+
+# System Files
+.DS_Store
+Thumbs.db 
