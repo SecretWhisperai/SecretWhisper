@@ -9,17 +9,17 @@
   <p align="center">
     <a href="https://secretwhisper.xyz">View Demo</a>
     ·
-    <a href="https://github.com/SecretWhisperxyz/SecretWhisper/issues">Report Bug</a>
+    <a href="https://github.com/SecretWhisperai/SecretWhisper/issues">Report Bug</a>
     ·
-    <a href="https://github.com/SecretWhisperxyz/SecretWhisper/issues">Request Feature</a>
+    <a href="https://github.com/SecretWhisperai/SecretWhisper/issues">Request Feature</a>
   </p>
 
   <p align="center">
     <a href="https://twitter.com/SecretWhisper_A">
       <img src="https://img.shields.io/twitter/follow/SecretWhisper_A?style=social" alt="Twitter Follow" />
     </a>
-    <a href="https://github.com/SecretWhisperxyz/SecretWhisper">
-      <img src="https://img.shields.io/github/stars/SecretWhisperxyz/SecretWhisper?style=social" alt="GitHub Stars" />
+    <a href="https://github.com/SecretWhisperai/SecretWhisper">
+      <img src="https://img.shields.io/github/stars/SecretWhisperai/SecretWhisper?style=social" alt="GitHub Stars" />
     </a>
   </p>
 </div>
@@ -127,126 +127,6 @@ cargo install --git https://github.com/coral-xyz/anchor avm --locked --force
 
 1. Clone the repository
 ```bash
-git clone https://github.com/SecretWhisperxyz/SecretWhisper.git
+git clone https://github.com/SecretWhisperai/SecretWhisper.git
 cd SecretWhisper
 ```
-
-2. Install dependencies
-```bash
-yarn install
-```
-
-3. Set up environment variables
-```bash
-cp .env.example .env
-```
-
-4. Configure your environment variables in `.env`:
-```env
-NEXT_PUBLIC_SOLANA_NETWORK=devnet
-NEXT_PUBLIC_RPC_URL=https://api.devnet.solana.com
-NEXT_PUBLIC_PROGRAM_ID=
-```
-
-### Development Mode
-
-```bash
-# Start local Solana validator
-solana-test-validator
-
-# Build and deploy program (in a new terminal)
-anchor build
-anchor deploy
-
-# Start development server
-yarn dev
-```
-
-### Production Deployment
-
-1. Build the application
-```bash
-yarn build
-```
-
-2. Deploy program to Solana network
-```bash
-anchor deploy --provider.cluster devnet  # For devnet
-anchor deploy --provider.cluster mainnet  # For mainnet
-```
-
-## 🏗️ Architecture
-
-### Smart Contracts
-
-The project uses several Solana programs:
-
-- `secret_whisper.rs`: Main messaging program
-- `group_chat.rs`: Group messaging functionality
-- `file_sharing.rs`: File sharing capabilities
-
-### Encryption Protocol
-
-1. **Message Encryption**
-   - AES-256-GCM for message content
-   - ECDH for key exchange
-   - Perfect forward secrecy per message
-
-2. **File Encryption**
-   - Chunked encryption for large files
-   - Secure key distribution
-   - Decentralized storage integration
-
-## 🔒 Security
-
-### Smart Contract Security
-
-- Comprehensive test coverage
-- External audit completed
-- Regular security updates
-- Transaction optimization for Solana
-
-### Privacy Features
-
-- No message content stored on-chain
-- Encrypted metadata
-- Anonymous channel creation
-- Secure key management
-
-## 🗺️ Roadmap
-
-- [x] Basic messaging functionality
-- [x] End-to-end encryption
-- [x] Group chat support
-- [x] File sharing
-- [ ] Voice messages
-- [ ] Video calls
-- [ ] Mobile applications
-- [ ] Cross-chain messaging with Wormhole
-
-## 🤝 Contributing
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
-
-## 📄 License
-
-Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
-
-## 🙏 Acknowledgments
-
-- [Solana Foundation](https://solana.com/) for blockchain infrastructure
-- [Anchor Framework](https://www.anchor-lang.com/) for development tools
-- [Material-UI](https://mui.com/) for UI components
-- All contributors and supporters
-
----
-
-<div align="center">
-  Made with ❤️ by the SecretWhisper Team
-</div> 
