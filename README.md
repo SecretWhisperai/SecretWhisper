@@ -7,7 +7,7 @@
   <p>Secure. Private. Decentralized.</p>
 
   <p align="center">
-    <a href="https://secretwhisper.xyz">View Demo</a>
+    <a href="https://www.secretwhisper.xyz">View Demo</a>
     ·
     <a href="https://github.com/SecretWhisperai/SecretWhisper/issues">Report Bug</a>
     ·
@@ -21,6 +21,10 @@
     <a href="https://github.com/SecretWhisperai/SecretWhisper">
       <img src="https://img.shields.io/github/stars/SecretWhisperai/SecretWhisper?style=social" alt="GitHub Stars" />
     </a>
+  </p>
+
+  <p align="center">
+    🌐 <a href="https://www.secretwhisper.xyz">Official Website</a>
   </p>
 </div>
 
