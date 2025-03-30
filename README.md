@@ -28,6 +28,226 @@
   </p>
 </div>
 
+## 🔑 Overview
+
+SecretWhisper is a revolutionary decentralized anonymous social platform built on Solana blockchain. It enables users to express their thoughts securely and privately through encrypted messaging, emotion tagging, and time-delayed message delivery.
+
+### Key Features
+
+- **Anonymous Messaging**: Send completely anonymous messages to any crypto wallet address
+- **Encrypted Garden**: Private space where only authorized messages can be displayed
+- **Voice Tokens**: Messages are minted as unique NFTs with privacy controls
+- **Emotion Tags**: Express feelings through categorized message tags
+- **Time Capsule**: Schedule messages for future delivery
+- **Blockchain Verification**: Immutable message confirmation and authenticity
+
+## 🏗️ System Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                        Client Applications                          │
+│                                                                     │
+│   ┌─────────────────┐   ┌─────────────────┐   ┌─────────────────┐   │
+│   │   Web dApp      │   │   Mobile App    │   │   Admin Portal  │   │
+│   │   (Next.js)     │   │   (Coming Soon) │   │   (Protected)   │   │
+│   └─────────────────┘   └─────────────────┘   └─────────────────┘   │
+└────────────────────────────────┬────────────────────────────────────┘
+                                 │
+                                 ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│                        Solana Programs                              │
+│                                                                     │
+│   ┌─────────────────┐   ┌─────────────────┐   ┌─────────────────┐   │
+│   │  Message Core   │   │   NFT System    │   │   Time Lock     │   │
+│   │  Program        │   │   Program       │   │   Program       │   │
+│   └─────────────────┘   └─────────────────┘   └─────────────────┘   │
+└────────────────────────────────┬────────────────────────────────────┘
+                                 │
+                                 ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│                     Security & Privacy Layer                        │
+│                                                                     │
+│   ┌─────────────────┐   ┌─────────────────┐   ┌─────────────────┐   │
+│   │  End-to-End     │   │  Zero-Knowledge │   │   Key           │   │
+│   │  Encryption     │   │  Proofs         │   │   Management    │   │
+│   └─────────────────┘   └─────────────────┘   └─────────────────┘   │
+└────────────────────────────────┬────────────────────────────────────┘
+                                 │
+                                 ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│                         Storage Layer                               │
+│                                                                     │
+│   ┌─────────────────┐   ┌─────────────────┐   ┌─────────────────┐   │
+│   │   Encrypted     │   │    Metadata     │   │   Message       │   │
+│   │   Content       │   │    Storage      │   │   Index        │   │
+│   └─────────────────┘   └─────────────────┘   └─────────────────┘   │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+## 💻 Technical Stack
+
+### Frontend
+- **Framework**: Next.js with React
+- **State Management**: Redux Toolkit
+- **UI Components**: Material-UI
+- **Wallet Integration**: Solana Wallet Adapter
+- **Encryption**: Web Crypto API
+
+### Blockchain
+- **Network**: Solana
+- **Programs**: Rust with Anchor Framework
+- **Token Standards**: SPL Token & Metaplex NFT
+- **Testing**: Mocha & Chai
+
+### Security
+- **Encryption**: AES-256-GCM
+- **Key Exchange**: ECDH
+- **Privacy**: Zero-knowledge proofs
+- **Storage**: Encrypted distributed storage
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js (v16+)
+- Rust and Cargo
+- Solana Tool Suite
+- Anchor Framework
+- Phantom Wallet
+
+### Installation
+
+```bash
+# Install Solana
+sh -c "$(curl -sSfL https://release.solana.com/v1.17.0/install)"
+
+# Install Anchor
+cargo install --git https://github.com/coral-xyz/anchor avm --locked --force
+
+# Clone repository
+git clone https://github.com/SecretWhisperai/SecretWhisper.git
+cd SecretWhisper
+
+# Install dependencies
+yarn install
+
+# Set up environment
+cp .env.example .env
+
+# Start development
+yarn dev
+```
+
+## 📊 Core Features
+
+### Messaging System
+
+1. **Anonymous Messaging**
+   - Wallet-to-wallet messaging
+   - End-to-end encryption
+   - Metadata privacy
+
+2. **Voice Tokens**
+   - NFT message minting
+   - Privacy controls
+   - Transferable ownership
+
+3. **Time Capsule**
+   - Future message scheduling
+   - Automatic delivery
+   - Timestamp verification
+
+4. **Emotion Tagging**
+   - Categorized expressions
+   - Sentiment analysis
+   - Tag-based filtering
+
+## 🔒 Security Framework
+
+### 1. Message Security
+- End-to-end encryption
+- Forward secrecy
+- Metadata protection
+
+### 2. Privacy Features
+- Anonymous channels
+- Zero-knowledge proofs
+- Private key management
+
+### 3. Platform Security
+- Smart contract audits
+- Regular security updates
+- Incident response plan
+
+## 💎 Tokenomics
+
+### $WHISP Token
+- **Total Supply**: 1 Billion
+- **Use Cases**:
+  - Message fee payment
+  - Governance participation
+  - Platform revenue sharing
+  - Feature access
+
+### Token Distribution
+- Platform Development: 30%
+- Community Rewards: 25%
+- Team & Advisors: 20%
+- Public Sale: 15%
+- Reserve: 10%
+
+## 🗺️ Roadmap
+
+### Phase 1: Seed (Current)
+- [x] Core messaging functionality
+- [x] Basic encryption
+- [x] Smart contract deployment
+- [x] Initial security audit
+
+### Phase 2: Sprout
+- [ ] Enhanced privacy features
+- [ ] Mobile application
+- [ ] Voice token marketplace
+- [ ] Community governance
+
+### Phase 3: Growth
+- [ ] Advanced encryption
+- [ ] Cross-chain integration
+- [ ] Enterprise solutions
+- [ ] Ecosystem expansion
+
+### Phase 4: Bloom
+- [ ] Full DAO governance
+- [ ] Developer API
+- [ ] Global expansion
+- [ ] Strategic partnerships
+
+## 📖 Documentation
+
+- [User Guide](docs/user-guide.md)
+- [Developer Docs](docs/developer.md)
+- [API Reference](docs/api.md)
+- [Security](docs/security.md)
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit changes (`git commit -m 'Add AmazingFeature'`)
+4. Push to branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+See [Contributing Guidelines](CONTRIBUTING.md) for more details.
+
+## 📜 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+<div align="center">
+  Made with ❤️ by the SecretWhisper Team
+</div>
+
 ## 📋 Table of Contents
 
 - [About The Project](#about-the-project)
